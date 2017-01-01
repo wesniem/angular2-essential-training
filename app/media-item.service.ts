@@ -1,6 +1,21 @@
+import {Http, URLSearchParams} from '@angular/http';
+import {Injectable} from '@angular/core';
+import 'rxjs/add/operator/map';
+import {DefaultUrlSerializer} from "@angular/router";
+
+@Injectable()
 export class MediaItemService {
-  get() {
-    return this.mediaItems;
+  constructor(private http: Http){
+
+  }
+  get(medium) {
+    let searchParams = new URLSearchParams();
+    searchParams.append('medium', medium);
+
+    return this.http.get('mediaitems', {search: searchParams})
+        .map(response => {
+          return response.json().mediaItems;
+        });
   }
   
   add(mediaItem) {

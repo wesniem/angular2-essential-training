@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'mw-media-item-list',
   templateUrl: 'app/media-item-list.component.html',
